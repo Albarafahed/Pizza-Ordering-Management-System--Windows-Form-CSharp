@@ -484,29 +484,42 @@ LoginForm
 ```text
 Pizza
 │
-├── Pizza.csproj
-├── Program.cs
+├── Pizza
+│   │
+│   ├── Pizza.csproj
+│   ├── Program.cs
+│   │
+│   ├── Product.cs
+│   ├── ShoppingCartService.cs
+│   ├── JsonDatabase.cs
+│   │
+│   ├── LoginForm.cs
+│   ├── LoginForm.Designer.cs
+│   │
+│   ├── MainMenu.cs
+│   ├── MainMenu.Designer.cs
+│   │
+│   ├── OrderPizzaForm.cs
+│   ├── OrderPizzaForm.Designer.cs
+│   │
+│   ├── OrderJuiceForm.cs
+│   ├── OrderJuiceForm.Designer.cs
+│   │
+│   ├── OrderDessertForm.cs
+│   ├── OrderDessertForm.Designer.cs
+│   │
+│   ├── OrdersForm.cs
+│   ├── OrdersForm.Designer.cs
+│   │
+│   ├── RemoteForm.cs
+│   ├── RemoteForm.Designer.cs
+│   │
+│   ├── packages
+│   │   └── Newtonsoft.Json
+│   │
+│   └── orders.json
 │
-├── Product.cs
-├── ShoppingCartService.cs
-├── JsonDatabase.cs
-│
-├── LoginForm
-│
-├── MainMenu
-│
-├── OrderPizzaForm
-│
-├── OrderJuiceForm
-│
-├── OrderDessertForm
-│
-├── OrdersForm
-│
-├── RemoteForm
-│
-├── packages
-│   └── Newtonsoft.Json
+├── Pizza.sln
 │
 └── README.md
 ```
