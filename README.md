@@ -1,133 +1,329 @@
-# 🍕 Pizza Ordering Management System - WinForms Desktop Application
+# 🍕 Pizza Ordering Management System
 
 ![C#](https://img.shields.io/badge/Language-C%23-blue)
 ![.NET Framework](https://img.shields.io/badge/Framework-.NET%20Framework%204.8-purple)
 ![WinForms](https://img.shields.io/badge/UI-Windows%20Forms-green)
-![JSON](https://img.shields.io/badge/Storage-JSON%20Persistence-orange)
-![Architecture](https://img.shields.io/badge/Architecture-Layered%20Design-blue)
-![Printing](https://img.shields.io/badge/Printing-PrintDocument-red)
-![Version Control](https://img.shields.io/badge/Version%20Control-Git-orange)
+![JSON](https://img.shields.io/badge/Storage-JSON-orange)
+![Architecture](https://img.shields.io/badge/Architecture-Layered-blue)
+![Newtonsoft.Json](https://img.shields.io/badge/JSON-Newtonsoft.Json-yellow)
+![Git](https://img.shields.io/badge/Version%20Control-Git-orange)
 
-A desktop food ordering management application built using **C# Windows Forms** and **.NET Framework 4.8**.
+A desktop food ordering application built using **C# WinForms**, **.NET Framework 4.8**, and **JSON-based local storage**.
 
-The application allows users to create and manage food orders including **Pizza, Juice, and Dessert**, while providing order storage, printing, filtering, and delivery status management.
+The application allows users to create and manage pizza, juice, and dessert orders, print customer bills, and track delivery status through a simple desktop interface.
 
-The system uses a simple layered architecture consisting of UI forms, a service layer for order management, and local JSON-based persistence.
+---
+
+# 📸 Application Preview
+
+## 🔐 Login
+
+<p align="center">
+<img src="Images/frmLogin.png" width="900">
+</p>
+
+---
+
+## 🏠 Main Menu
+
+<p align="center">
+<img src="Images/frmMain.png" width="900">
+</p>
+
+---
+
+## 🍕 Pizza Order
+
+<p align="center">
+<img src="Images/frmPizzaOrder.png" width="900">
+</p>
+
+---
+
+## 🧃 Juice Order
+
+<p align="center">
+<img src="Images/frmJuicesOrder.png" width="900">
+</p>
+
+---
+
+## 🍰 Dessert Order
+
+<p align="center">
+<img src="Images/frmDesertOrder.png" width="900">
+</p>
+
+---
+
+## 🖨 Print Bills
+
+<p align="center">
+<img src="Images/frmPrintBills.png" width="900">
+</p>
+
+---
+
+## 🚚 Remote Delivery
+
+<p align="center">
+<img src="Images/frmRemoteDelivery.png" width="900">
+</p>
 
 ---
 
 # 📑 Table of Contents
 
-* [Features](#-features)
-* [Technology Stack](#-technology-stack)
-* [Architecture](#-architecture)
-* [Order Management](#-order-management)
-* [Printing System](#-printing-system)
-* [Delivery Tracking](#-delivery-tracking)
-* [Design Patterns](#-design-patterns)
-* [Data Storage](#-data-storage)
-* [Installation](#-installation)
-* [Project Structure](#-project-structure)
-* [Limitations](#-limitations)
-* [Future Improvements](#-future-improvements)
-* [Contact](#-contact)
+- Features
+- Screenshots
+- Technology Stack
+- Architecture
+- Database
+- Installation
+- Project Structure
+- Notes
+- Future Improvements
+- Author
 
 ---
 
 # 🚀 Features
 
-# 🔐 User Login
+## 🔐 Authentication
 
-The application provides a login screen.
+The application includes a simple login system.
 
-Available credentials:
+Features
 
-```text
-Admin
-Password: A1234
+- User login
+- Access control
+- Main menu navigation
 
-User 1
-Password: a1234
-```
-
-Note:
-
-* Credentials are currently stored directly in the application code.
+> The current implementation uses predefined user accounts.
 
 ---
 
-# 🏠 Main Menu
+## 🍕 Pizza Ordering
 
-The main menu provides navigation between application modules.
+Create customized pizza orders.
 
-Features:
+Features
 
-* Open order forms.
-* Display child forms inside a panel.
-* Manage application workflow.
+- Select pizza size
+- Choose crust type
+- Select toppings
+- Specify quantity
+- Automatic price calculation
 
-Main form:
+---
+
+## 🧃 Juice Ordering
+
+Create juice orders.
+
+Features
+
+- Select juice type
+- Select size
+- Specify quantity
+- Automatic price calculation
+
+---
+
+## 🍰 Dessert Ordering
+
+Create dessert orders.
+
+Features
+
+- Select dessert type
+- Select size
+- Choose toppings
+- Specify quantity
+- Automatic price calculation
+
+---
+
+## 🛒 Order Management
+
+Manage customer orders.
+
+Features
+
+- Group orders by customer
+- View all orders
+- Delete orders
+- Mark printed orders
+- Filter printed and unprinted orders
+
+---
+
+## 🖨 Printing
+
+Generate printable customer bills.
+
+Features
+
+- Print Preview
+- Print customer orders
+- Calculate order totals
+- Separate printed orders
+
+---
+
+## 🚚 Delivery Management
+
+Track customer deliveries.
+
+Features
+
+- View delivery orders
+- Update delivery status
+- Track order progress
+
+Delivery Workflow
 
 ```text
+Pending
+      │
+      ▼
+Delivering
+      │
+      ▼
+Delivered
+```
+
+---
+
+## 💾 Local Storage
+
+Orders are stored locally.
+
+Features
+
+- JSON persistence
+- Automatic loading
+- Automatic saving
+- No external database required
+
+---
+
+# 🛠 Technology Stack
+
+| Category | Technology |
+|----------|------------|
+| Language | C# |
+| Framework | .NET Framework 4.8 |
+| UI | Windows Forms |
+| Storage | JSON |
+| Serialization | Newtonsoft.Json |
+| Architecture | Layered Architecture |
+| Printing | PrintDocument |
+| IDE | Visual Studio |
+| Version Control | Git & GitHub |
+
+---
+
+# 🏛 Architecture
+
+The project follows a simple layered architecture.
+
+```text
+                 +----------------------+
+                 |  Presentation Layer  |
+                 |      WinForms UI     |
+                 +----------+-----------+
+                            |
+                            ▼
+                 +----------------------+
+                 |   Service Layer      |
+                 | ShoppingCartService  |
+                 +----------+-----------+
+                            |
+                            ▼
+                 +----------------------+
+                 | Persistence Layer    |
+                 |    JsonDatabase      |
+                 +----------+-----------+
+                            |
+                            ▼
+                 +----------------------+
+                 |     orders.json      |
+                 +----------------------+
+```
+
+---
+
+## 🖥 Presentation Layer
+
+Responsibilities
+
+- User interaction
+- Navigation
+- Order forms
+- Printing
+- Delivery management
+
+Main Forms
+
+```text
+LoginForm
 MainMenu
+OrderPizzaForm
+OrderJuiceForm
+OrderDessertForm
+OrdersForm
+RemoteForm
 ```
 
 ---
 
-# 🍕 Pizza Orders
+## ⚙ Service Layer
 
-Users can create customizable pizza orders.
-
-## Available Options
-
-* Pizza size.
-* Toppings.
-* Crust type.
-* Quantity.
-* Price calculation.
-
-Order data:
+Main Class
 
 ```text
-Product
-Size
-Topping
-Amount
-Price
+ShoppingCartService
 ```
 
----
+Responsibilities
 
-# 🧃 Juice Orders
-
-The system supports juice ordering.
-
-Features:
-
-* Select juice type.
-* Choose size.
-* Specify quantity.
-* Calculate total price.
+- Manage orders
+- Calculate prices
+- Group customer orders
+- Save changes
+- Load existing orders
 
 ---
 
-# 🍰 Dessert Orders
+## 💾 Persistence Layer
 
-The application supports dessert orders.
+Main Class
 
-Features:
+```text
+JsonDatabase
+```
 
-* Dessert type.
-* Size selection.
-* Toppings.
-* Quantity.
-* Automatic price calculation.
+Responsibilities
+
+- Read orders.json
+- Save orders.json
+- JSON serialization
+- JSON deserialization
 
 ---
 
-# 📦 Order Management
+# 🗄 Database
 
-Each order contains:
+Instead of using SQL Server, this application stores data locally.
+
+Storage
+
+```text
+orders.json
+```
+
+Stored Information
 
 ```text
 OrderId
@@ -141,341 +337,91 @@ Amount
 Status
 IsPrinted
 ```
-
----
-
-# 👤 Customer Management
-
-The system generates customer IDs automatically.
-
-Implemented method:
-
-```csharp
-ShoppingCartService.GetNextCustomerId()
-```
-
-Responsibilities:
-
-* Generate unique customer identifier.
-* Associate multiple orders with the same customer.
-
----
-
-# 🛒 Shopping Cart Service
-
-The application uses a service layer for order management.
-
-Main class:
-
-```text
-ShoppingCartService
-```
-
-Responsibilities:
-
-* Store orders in memory.
-* Add orders.
-* Remove orders.
-* Retrieve orders.
-* Save changes.
-* Load existing orders.
-
----
-
-# 🖨 Printing System
-
-The application supports printing customer orders.
-
-Features:
-
-* Select customer orders.
-* Preview before printing.
-* Generate printable output.
-* Calculate total price.
-* Mark orders as printed.
-
-Technology:
-
-```text
-System.Drawing.Printing.PrintDocument
-```
-
----
-
-# 🚚 Delivery Status Management
-
-The Remote module manages delivery progress.
-
-Supported statuses:
-
-```text
-Pending
-   ↓
-Delivering
-   ↓
-Delivered
-```
-
-Features:
-
-* Filter orders by customer.
-* Filter by status.
-* Update delivery progress.
-* Save status changes.
-
----
-
-# 📊 Orders Management Form
-
-The OrdersForm provides:
-
-Features:
-
-* Display orders using DataGridView.
-* Filter by:
-
-  * Printed orders.
-  * Unprinted orders.
-  * Customer ID.
-* Delete selected orders.
-* Print customer orders.
-* Color rows based on customer grouping.
-
----
-
-# 🏛 Architecture
-
-The application follows a simple layered architecture.
-
-```text
-Pizza Application
-
-        |
-        ↓
-
- UI Layer
-(WinForms Forms)
-
-        |
-        ↓
-
- Service Layer
-ShoppingCartService
-
-        |
-        ↓
-
- Persistence Layer
-JsonDatabase
-
-        |
-        ↓
-
- orders.json
-```
-
----
-
-# 🖥 UI Layer
-
-Contains Windows Forms screens.
-
-Forms:
-
-```text
-LoginForm
-MainMenu
-OrderPizzaForm
-OrderJuiceForm
-OrderDessertForm
-OrdersForm
-RemoteForm
-```
-
-Responsibilities:
-
-* User interaction.
-* Display information.
-* Handle events.
-* Navigate between screens.
-
----
-
-# ⚙ Service Layer
-
-Main component:
-
-```text
-ShoppingCartService
-```
-
-Responsibilities:
-
-* Manage order collection.
-* Provide CRUD operations.
-* Coordinate saving/loading operations.
-
-The service works as a small repository abstraction for orders.
-
----
-
-# 💾 Persistence Layer
-
-Component:
-
-```text
-JsonDatabase
-```
-
-Responsibilities:
-
-* Read JSON data.
-* Write JSON data.
-* Handle local storage operations.
-
-Storage file:
-
-```text
-orders.json
-```
-
----
-
-# 🧩 Design Patterns & Programming Style
-
-## Dependency Injection
-
-Child forms receive:
-
-```text
-ShoppingCartService
-```
-
-instance from the parent form.
-
----
-
-## Repository-Like Pattern
-
-`ShoppingCartService` acts as a lightweight repository:
-
-Provides:
-
-```text
-Add
-Remove
-Get
-Save
-Load
-```
-
----
-
-## POCO / DTO Model
-
-Main entity:
-
-```text
-Product
-```
-
-Contains order data used throughout the application.
-
----
-
-## Event-Driven UI
-
-The application depends on WinForms events:
-
-Examples:
-
-```csharp
-Button.Click
-Form.Load
-PrintDocument.PrintPage
-```
-
----
-
-# 🛠 Technology Stack
-
-| Category         | Technology                 |
-| ---------------- | -------------------------- |
-| Language         | C#                         |
-| Framework        | .NET Framework 4.8         |
-| UI               | Windows Forms              |
-| Storage          | JSON File                  |
-| JSON Library     | Newtonsoft.Json 13.0.4     |
-| Printing         | System.Drawing.Printing    |
-| IDE              | Visual Studio              |
-| Build            | MSBuild                    |
-| Application Type | WinExe Desktop Application |
-
----
-
-# 🗄 Data Storage
-
-The application does not use an external database.
-
-Storage:
-
-```text
-orders.json
-```
-
-Behavior:
-
-* Orders loaded when ShoppingCartService starts.
-* Changes saved back to JSON file.
-* Local file-based persistence.
-
 ---
 
 # ⚙ Installation
 
 ## Requirements
 
-Install:
+Before running the application, make sure you have:
 
-* Windows Operating System.
-* Visual Studio 2019 or newer.
-* .NET Framework 4.8 Developer Pack.
+- Windows
+- Visual Studio 2022 (or newer)
+- .NET Framework 4.8 Developer Pack
 
 ---
 
 ## Setup
 
-1. Clone repository:
+### 1. Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Albarafahed/Pizza-Windows-Forms.git
 ```
 
-2. Open solution:
+> Replace the repository URL with the correct GitHub repository if necessary.
+
+---
+
+### 2. Open the project
+
+Open
 
 ```text
-Pizza.sln
+Pizza.csproj
 ```
 
-3. Restore NuGet packages.
+or the solution file if available.
 
-Required package:
+---
+
+### 3. Restore NuGet packages
+
+The project uses
 
 ```text
-Newtonsoft.Json 13.0.4
+Newtonsoft.Json
 ```
 
-4. Build solution.
+Visual Studio will restore the package automatically when opening the project.
 
-5. Run application.
+---
 
-Startup:
+### 4. Build and Run
+
+Build the project and press **F5**.
+
+The application automatically creates
+
+```text
+orders.json
+```
+
+if it does not already exist.
+
+---
+
+# ▶ Running the Project
+
+Application startup flow
 
 ```text
 Program.cs
-        ↓
+      │
+      ▼
 LoginForm
+      │
+      ▼
+MainMenu
 ```
+
+From the main menu you can open
+
+- Pizza Ordering
+- Juice Ordering
+- Dessert Ordering
+- Orders
+- Remote Delivery
 
 ---
 
@@ -484,94 +430,171 @@ LoginForm
 ```text
 Pizza
 │
-├── Pizza
-│   │
-│   ├── Pizza.csproj
-│   ├── Program.cs
-│   │
-│   ├── Product.cs
-│   ├── ShoppingCartService.cs
-│   ├── JsonDatabase.cs
-│   │
-│   ├── LoginForm.cs
-│   ├── LoginForm.Designer.cs
-│   │
-│   ├── MainMenu.cs
-│   ├── MainMenu.Designer.cs
-│   │
-│   ├── OrderPizzaForm.cs
-│   ├── OrderPizzaForm.Designer.cs
-│   │
-│   ├── OrderJuiceForm.cs
-│   ├── OrderJuiceForm.Designer.cs
-│   │
-│   ├── OrderDessertForm.cs
-│   ├── OrderDessertForm.Designer.cs
-│   │
-│   ├── OrdersForm.cs
-│   ├── OrdersForm.Designer.cs
-│   │
-│   ├── RemoteForm.cs
-│   ├── RemoteForm.Designer.cs
-│   │
-│   ├── packages
-│   │   └── Newtonsoft.Json
-│   │
-│   └── orders.json
+├── Pizza.csproj
+├── Program.cs
+├── App.config
 │
-├── Pizza.sln
+├── Product.cs
+├── ShoppingCartService.cs
+├── JsonDatabase.cs
+│
+├── LoginForm
+├── MainMenu
+├── OrderPizzaForm
+├── OrderJuiceForm
+├── OrderDessertForm
+├── OrdersForm
+└── RemoteForm
+│
+├── Images
+│   ├── frmLogin.png
+│   ├── frmMain.png
+│   ├── frmPizzaOrder.png
+│   ├── frmJuicesOrder.png
+│   ├── frmDesertOrder.png
+│   ├── frmPrintBills.png
+│   └── frmRemoteDelivery.png
+│
+├── packages
+│   └── Newtonsoft.Json
 │
 └── README.md
 ```
 
 ---
 
-# ⚠️ Limitations
+# 📝 Notes
 
-Current limitations:
-
-* Authentication uses hard-coded credentials.
-* No user management system.
-* No encryption for stored data.
-* JSON file has no concurrency handling.
-* Designed for single-user usage.
-* No external database.
-* No automated tests.
-* No CI/CD configuration.
-* No license file included.
-* Configuration values are stored inside code.
+- Desktop Windows Forms application.
+- Uses local JSON storage.
+- No external database required.
+- Orders are automatically saved after changes.
+- Supports Print Preview.
+- Uses Newtonsoft.Json for serialization.
+- Customer orders are grouped by Customer ID.
 
 ---
 
-# 🔮 Future Improvements
+# 🔒 Security Notes
 
-Possible improvements:
+Current implementation
 
-* Add SQL Server database.
-* Implement proper user authentication.
-* Add role-based authorization.
-* Separate business logic from UI.
-* Add repository interfaces.
-* Add unit tests.
-* Add logging system.
-* Add order reports.
-* Add inventory management.
-* Add online ordering support.
-* Add payment integration.
-* Add application configuration files.
+- Orders are stored as plain JSON files.
+- Login credentials are predefined in the application.
+- No password hashing is implemented.
+
+Possible improvements
+
+- Encrypt stored data.
+- Replace hard-coded users with database authentication.
+- Add role-based authorization.
 
 ---
 
-# 📧 Contact
+# ⚠ Known Limitations
+
+Current limitations include
+
+- No automated tests.
+- No logging framework.
+- Single-user desktop application.
+- No database support.
+- Hard-coded login credentials.
+- Business logic is tightly coupled with the UI.
+- No configuration file for the JSON storage location.
+
+---
+
+# 🚀 Future Improvements
+
+### Features
+
+- Search customer orders.
+- Order history.
+- Receipt export to PDF.
+- Sales dashboard.
+- Customer management.
+- Inventory management.
+
+---
+
+### Architecture
+
+- Repository Pattern.
+- Dependency Injection.
+- Better separation of business logic.
+- Improved exception handling.
+
+---
+
+### Storage
+
+- Replace JSON with SQLite.
+- Support SQL Server.
+- Configurable storage location.
+- Automatic backups.
+
+---
+
+### Development
+
+- Unit Testing.
+- Integration Testing.
+- Logging using Serilog.
+- Configuration through App.config.
+
+---
+
+# 📷 Images
+
+Application screenshots are stored in
+
+```text
+Images
+│
+├── frmLogin.png
+├── frmMain.png
+├── frmPizzaOrder.png
+├── frmJuicesOrder.png
+├── frmDesertOrder.png
+├── frmPrintBills.png
+└── frmRemoteDelivery.png
+```
+
+---
+
+# 📚 Learning Objectives
+
+This project demonstrates practical experience with:
+
+- C#
+- Windows Forms
+- Object-Oriented Programming (OOP)
+- JSON Serialization
+- Newtonsoft.Json
+- Desktop Application Development
+- PrintDocument
+- Event-Driven Programming
+
+---
+
+# 👤 Author
 
 **Albara Fahed Alharissy**
 
-Software Engineer | C# .NET Developer
+.NET Developer
 
-GitHub:
+- GitHub: https://github.com/Albarafahed
+- LinkedIn: https://www.linkedin.com/in/albara-csharp-developer/
 
-https://github.com/Albarafahed
+---
 
-LinkedIn:
+# ⭐ Support
 
-https://www.linkedin.com/in/albara-csharp-developer/
+If you found this project useful, consider giving it a **⭐ Star** on GitHub.
+
+---
+
+# 📄 License
+
+This repository does not currently include a LICENSE file.

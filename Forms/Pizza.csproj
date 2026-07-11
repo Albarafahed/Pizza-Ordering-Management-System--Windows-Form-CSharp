@@ -145,6 +145,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="README.md" />
     <None Include="Resources\pizasors.png" />
   </ItemGroup>
   <ItemGroup>
